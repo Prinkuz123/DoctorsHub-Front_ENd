@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { setError, setLoading, setPatients } from "../Redux/Slices/reducer";
+import { setError, setLoading, setPatients } from "../Redux/Slices/patient";
 import Table from "react-bootstrap/Table";
 
 const Viewpatients = () => {

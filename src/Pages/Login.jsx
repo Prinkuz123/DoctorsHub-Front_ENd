@@ -41,14 +41,14 @@ const Login = () => {
       // console.log(response.data.status);
       if (response.data.status === "success") {
         // console.log(email, password);
-        // alert("logined successfully");
+        alert(response.data.message);
         if (isAdmin) {
           return navigate("/adminPage");
         } else {
           navigate("/");
         }
       } else {
-        alert("incorrect password or email");
+        alert(response.data.message);
       }
     } catch (error) {
       console.log("some errors while login", error);
@@ -87,7 +87,7 @@ const Login = () => {
           variant="outlined"
         />}
      
-        <TextField label="Password" name="password" variant="outlined" />
+        <TextField label="Password" name="password" type="password" variant="outlined" />
 
         <Stack
         spacing={2}

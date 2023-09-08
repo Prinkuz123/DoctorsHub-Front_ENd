@@ -32,11 +32,18 @@ const Register = () => {
       })
       console.log(response)
       if(response.status===200){
-        alert("profile saved successfully")
+        alert(response.data.message)
+        inputRef.current.username.value="",
+        inputRef.current.password.value="",
+        inputRef.current.email.value="",
+        inputRef.current.age.value="",
+        inputRef.current.address.value="",
+        inputRef.current.phone.value=""
+
       }
       else{
          
-        alert("user already exist")
+        alert(response.data.message)
       }
 
     }
