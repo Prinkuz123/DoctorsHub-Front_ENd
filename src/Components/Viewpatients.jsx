@@ -6,10 +6,11 @@ import Table from "react-bootstrap/Table";
 
 const Viewpatients = () => {
   const patient= useSelector((state) => state.patient.patients);
-  console.log(patient);
+  // console.log(patient);
   const loading = useSelector((state) => state.patient.loading);
   const error = useSelector((state) => state.patient.error);
   const dispatch = useDispatch();
+  
 
   useEffect(() => {
     dispatch(setLoading(true));
@@ -25,6 +26,12 @@ const Viewpatients = () => {
         dispatch(setLoading(false));
       });
   }, [dispatch]);
+  // const editById=(event)=>{
+  //   const btnId=parseInt(event.target.id)
+  //   const patientid=patient.filter((item1)=>parseInt(item1.id)==btnId)
+  // dispatch(setPatients(patientid
+  //   ))
+  // } 
 
   return (
     <div >
@@ -46,7 +53,7 @@ const Viewpatients = () => {
           </thead>
           <tbody>
          { patient.map((data) =>(  <tr key={data.id}>
-            <td>{data.username}</td>
+            <td  id={data.id}>{data.username}</td>
             <td>{data.email}</td>
             <td>{data.age}</td>
             <td>{data.address}</td>

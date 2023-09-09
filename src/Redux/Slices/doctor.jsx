@@ -7,7 +7,7 @@ import { createSlice } from "@reduxjs/toolkit";
  }
 
  const doctorSlice=createSlice({
-    name:"doctor",
+    name:"doctors",
     initialState,
     reducers:{
         setDoctors:(state,action)=>{

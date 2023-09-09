@@ -6,6 +6,9 @@ import Register from "./Pages/Register"
 import Body from './Pages/Home'
 import Viewpatients from './Components/Viewpatients'
 import Medicines from './Pages/Medicines'
+import ViewDoctors from './Components/viewDoctors'
+import ViewMedicines from './Components/viewMedicines'
+import EditPage from './Components/editPage'
 
 function App() {
 
@@ -21,8 +24,13 @@ function App() {
     <Route  path="/Login"  element={<Login/>}/>
     <Route  path="/adminpage"  element={<AdminPage/>}/>
     <Route  path="/medicine"  element={<Medicines/>}/>
+    
+
     <Route element={<AdminPage/>}>
     <Route  path="/viewpatients"  element={<Viewpatients/>}/>
+    <Route  path="/viewdoctors"  element={<ViewDoctors/>}/>
+    <Route  path="/viewmedicines"  element={<ViewMedicines/>}/>
+    <Route  path="/viewpatients/:id"  element={<EditPage/>}/>
     </Route>
  
     </Routes>
