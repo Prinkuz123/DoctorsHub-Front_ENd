@@ -1,16 +1,29 @@
-import { useEffect } from "react";
+import { useEffect,useRef,useState } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setError, setLoading, setPatients } from "../Redux/Slices/patient";
 import Table from "react-bootstrap/Table";
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const Viewpatients = () => {
   const patient= useSelector((state) => state.patient.patients);
-  // console.log(patient);
   const loading = useSelector((state) => state.patient.loading);
   const error = useSelector((state) => state.patient.error);
-  const dispatch = useDispatch();
+
   
+  const dispatch = useDispatch();
+  const inputRef=useRef()
+const [searchData,setSearchData]=useState([])  
+
+
+const handleSearch = () => {
+  const search = inputRef.current.value.trim().toLowerCase();
+  const searchData = patient.filter((item) =>  item.email.toLowerCase().includes(search));
+  setSearchData(searchData);
+  console.log(searchData);
+}
 
   useEffect(() => {
     dispatch(setLoading(true));
@@ -26,16 +39,29 @@ const Viewpatients = () => {
         dispatch(setLoading(false));
       });
   }, [dispatch]);
-  // const editById=(event)=>{
-  //   const btnId=parseInt(event.target.id)
-  //   const patientid=patient.filter((item1)=>parseInt(item1.id)==btnId)
-  // dispatch(setPatients(patientid
-  //   ))
-  // } 
+
 
   return (
-    <div >
-      <h1>patients</h1>
+<div  className="view-main">  
+<div><h1>Patients</h1>
+<Form className="d-flex">
+  <Row>
+    <Col xs="12" className="mx-auto">
+      <Form.Control
+        type="text"
+        placeholder="Search"
+        className="search-input"
+        onChange={handleSearch}
+        ref={inputRef}
+      />
+    </Col>
+    <Col xs="auto">
+    </Col>
+  </Row>
+</Form>
+</div>
+
+    
       {loading ? (
         <h3>loading</h3>
       ) : error ? (
@@ -44,6 +70,7 @@ const Viewpatients = () => {
         <Table striped bordered hover>
           <thead>
             <tr>
+              <th>Sl.no</th>
               <th>Username</th>
               <th>email</th>
               <th>Age</th>
@@ -52,7 +79,8 @@ const Viewpatients = () => {
             </tr>
           </thead>
           <tbody>
-         { patient.map((data) =>(  <tr key={data.id}>
+          {(searchData.length>0?searchData:patient).map((data,index) =>(  <tr key={data.id}>
+            <td>{index+1}</td>
             <td  id={data.id}>{data.username}</td>
             <td>{data.email}</td>
             <td>{data.age}</td>

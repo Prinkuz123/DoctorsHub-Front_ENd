@@ -1,3 +1,4 @@
+import Button from "react-bootstrap/esm/Button";
 import CardComponent from "../Components/cardComponent";
 import "../Style/Style.css";
 import Card from "react-bootstrap/Card";
@@ -8,13 +9,14 @@ const Body = () => {
        <Card className="bg-dark text-white"   >
   <Card.Img src="https://images.pexels.com/photos/4225920/pexels-photo-4225920.jpeg?auto=compress&cs=tinysrgb&w=600/100px270" style={{height:"45rem" ,width:"80rem"}}alt="Card image" />
   <Card.ImgOverlay>
-    <Card.Title>Card title</Card.Title>
+    <Card.Title>Doctors Hub</Card.Title>
     <Card.Text>
-      This is a wider card with supporting text below as a natural lead-in to
-      additional content. This content is a little bit longer.
+   <h1>Skip the travel!</h1> 
+    <h3 style={{fontFamilydisplay: 'block',
+    }}>Take Online Doctor Consultation</h3>
     </Card.Text>
-    <Card.Text>Last updated 3 mins ago</Card.Text>
-  </Card.ImgOverlay>
+<Button>Consult Now</Button>
+    </Card.ImgOverlay>
 </Card>
 
 <div className="div-2" >

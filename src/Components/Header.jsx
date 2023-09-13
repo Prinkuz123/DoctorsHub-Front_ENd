@@ -18,8 +18,7 @@ const Header = () => {
               navbarScroll
             >
               <Nav.Link href="/medicine">Medicine</Nav.Link>
-              <Nav.Link href="/">Rehabilitation Device</Nav.Link>
-              <Nav.Link href="">VideoConsultancy</Nav.Link>
+              <Nav.Link href="/">VideoConsultancy</Nav.Link>
               <Nav.Link href="/Register">Register</Nav.Link>
               <Nav.Link href="/Login">Login</Nav.Link>
             </Nav>
