@@ -6,6 +6,8 @@ import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 
 const ViewMedicines = () => {
@@ -13,6 +15,7 @@ const ViewMedicines = () => {
     const loading=useSelector((state)=>state.medicine.loading)
 const error=useSelector((state)=>state.medicine.error)
 
+const navigate=useNavigate()
 const dispatch=useDispatch()
 const inputRef=useRef()
 const[searchData,setSearchData]=useState([])
@@ -43,7 +46,7 @@ dispatch(setLoading(false))
     <Col xs="12" className="mx-auto">
       <Form.Control
         type="text"
-        placeholder="Search"
+        placeholder="Search with name of medicine"
         className="search-input"
         onChange={handleSearch}
         ref={inputRef}
@@ -53,6 +56,9 @@ dispatch(setLoading(false))
     </Col>
   </Row>
 </Form>
+
+<Button onClick={()=>navigate('/adddmedicines')}>Add Medicines</Button>
+
 {loading?<h3>Loading</h3>:error?<h3>Error</h3>:(
     <Table responsive="sm">
         <thead>
@@ -66,7 +72,7 @@ dispatch(setLoading(false))
         <tbody>
         {(searchData.length>0?searchData:medicine).map((data,index)=>(<tr key={data.id}>
           <td>{index+1}</td>
-          <td>{data.name}</td>
+          <td onClick={()=>{navigate(`/viewsinglemedicine/${data._id}`)}}>{data.name}</td>
           <td>{data.company}</td>
           <td>{data.price}</td>
         </tr>))}

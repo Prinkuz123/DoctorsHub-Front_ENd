@@ -29,6 +29,33 @@ padding-top: 2rem;  display: flex;
   width: 500px;
   height: 40px; 
 }
-.view-main{
+
+.med-1{
+  margin: auto;
+
+  height: 30rem;
+  width: 80rem;
+  background-color: rgb(208, 185, 185);
+}
+.med-2{
+width: 80rem;
+  padding-top: 3rem;
+  display: flex;
+  justify-content: space-around; 
+  
+}
+.main-medicine{
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+ 
 
 }
+.form-btn{
+  position: relative;
+  top: 2rem; 
+  left: 1rem;
+}
+.add-Doctor{
+display: flex;
+justify-content: center;}

@@ -18,7 +18,7 @@ const Register = () => {
     const age=inputRef.current.age.value
     const address=inputRef.current.address.value
     const phone=inputRef.current.phone.value;
-    console.log(username,password,email,age,address,phone);
+    // console.log(username,password,email,age,address,phone);
 
     try{
       const response=await axios.post('http://localhost:5000/patient/register',{
@@ -30,7 +30,7 @@ const Register = () => {
         phone:phone,
 
       })
-      console.log(response)
+      // console.log(response)
       if(response.status===200){
         alert(response.data.message)
         inputRef.current.username.value="",

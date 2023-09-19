@@ -8,6 +8,8 @@ import  { setError } from "../Redux/Slices/patient";
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 
 
 
@@ -18,6 +20,7 @@ const doctor = useSelector((state)=>state.doctor.doctors)
 const loading=useSelector((state)=>state.doctor.loading);
 const error=useSelector((state)=>state.doctor.error);
 
+const navigate=useNavigate()
 const inputRef=useRef()
 const dispatch=useDispatch()
 const[searchData,setSearchData]=useState([])
@@ -45,14 +48,15 @@ useEffect(()=>{
 },[dispatch])
 
     return (
-    <div>
+    <div style={{justifyContent:"center"}}>
     <h1>Doctors</h1>
     <Form className="d-flex">
+   
   <Row>
     <Col xs="12" className="mx-auto">
       <Form.Control
         type="text"
-        placeholder="Search"
+        placeholder="Search with name of Doctor"
         className="search-input"
         onChange={handleSearch}
         ref={inputRef}
@@ -62,30 +66,30 @@ useEffect(()=>{
     </Col>
   </Row>
 </Form>
+
+<Button onClick={()=>navigate('/adddoctors')}> Create a Doctor</Button>
+
     {loading?<h3>loading</h3>:error?<h3>Error</h3>:(
       <Table responsive="sm">
         <thead>
           <tr>
             <th>Sl.no</th>
             <th>Name</th>
-            <th>Qualification</th>
+           
             <th>Specialisation</th>
-            <th>Age</th>
-            <th>Address</th>
+           
           </tr>
         </thead>
         <tbody>
         {(searchData.length>0?searchData:doctor).map((data,index)=>(
           <tr key={data.id}>
             <td>{index+1}</td>
-            <td>{data.username}</td>
-            <td>{data.qualification}</td>
+            <td onClick={()=>{navigate(`/viewsingledoctor/${data._id}`)}}>{data.username}</td>
             <td>{data.specialisation}</td>
-            <td>{data.age}</td>
-            <td>{data.address}</td>
           </tr>
           
          ))}
+
           
         </tbody>
       </Table>

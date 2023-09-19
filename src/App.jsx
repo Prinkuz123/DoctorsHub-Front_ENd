@@ -8,7 +8,11 @@ import Viewpatients from './Components/Viewpatients'
 import Medicines from './Pages/Medicines'
 import ViewDoctors from './Components/viewDoctors'
 import ViewMedicines from './Components/viewMedicines'
-import EditPage from './Components/editPage'
+import ViewSinglePatient from './Components/viewSinglePatient'
+import ViewSingleDoctor from './Components/viewSingleDoctor'
+import ViewSingleMedicine from './Components/viewSingleMedicine'
+import AddDoctors from './Components/AddDoctors'
+import AddMedicines from './Components/AddMedicines'
 
 function App() {
 
@@ -30,7 +34,11 @@ function App() {
     <Route  path="/viewpatients"  element={<Viewpatients/>}/>
     <Route  path="/viewdoctors"  element={<ViewDoctors/>}/>
     <Route  path="/viewmedicines"  element={<ViewMedicines/>}/>
-    <Route  path="/viewpatients/:id"  element={<EditPage/>}/>
+    <Route  path="/viewsinglepatient/:id"  element={<ViewSinglePatient/>}/>
+    <Route  path="/viewsingledoctor/:id"  element={<ViewSingleDoctor/>}/>
+    <Route  path="/viewsinglemedicine/:id"  element={<ViewSingleMedicine/>}/>
+    <Route  path="/adddoctors"  element={<AddDoctors/>}/>
+    <Route  path="/adddmedicines"  element={<AddMedicines/>}/>
     </Route>
  
     </Routes>
